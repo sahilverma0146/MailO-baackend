@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://mail-o-frontend.vercel.app",
     methods: ["GET", "POST"],
   },
 });
@@ -29,9 +29,9 @@ io.on("connection", (socket) => {
   console.log("USER CONNECTED", socket.id);
 
   // SEND FROM FRONTEND LIKE THIS
-  //   const newSocket = io(chat_Service, {
-  //     query: { userId: user._id },
-  //   });
+    // const newSocket = io(chat_Service, {
+    //   query: { userId: user._id },
+    // });
 
   // SAME AS QUERY ***FRONTEND SEND THE USERID AAND HERE THE SERVER --SOCKET-- GRAB IT
   const userId = socket.handshake.query?.userId;

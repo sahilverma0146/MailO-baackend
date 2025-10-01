@@ -26,7 +26,11 @@ connectRabbitMQ()
 
 // CONNECTION TO REDIS
 module.exports = redisClient = createClient({
-    url : process.env.REDIS_URL
+    url : process.env.REDIS_URL,
+    socket:{
+        tls:true,
+        rejectUnauthorized:true
+    }
 })
 redisClient.connect().then(()=>console.log("CONNECTED TO REDIS SUCCESSFULLY")).catch(console.error);
 
